@@ -16,6 +16,8 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout') 
 
 app.use(expressLayouts)
+
+// Ensure you have this line here to serve static files from public like css
 app.use(express.static('public'))
 
 const mongoose = require('mongoose')

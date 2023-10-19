@@ -1,0 +1,79 @@
+/* Add your styles here */
+h1 {
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+body {
+    font-family: Arial, sans-serif;
+        background-color: #57d157; /* Set the background color to a light gray */
+      
+}
+
+.start-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+
+    #wordBlocks {
+        display: flex;
+        gap: 10px; /* Space between blocks */
+        min-height: 60px; /* This ensures that the div doesn't collapse */
+    }
+
+
+
+.block {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.block[data-type="pronoun"] {
+    background-color: black;
+    color: white;
+}
+
+.block[data-type="verb"] {
+    background-color: red;
+}
+
+.block[data-type="noun"] {
+    background-color: blue;
+    color: white;
+}
+
+#constructedSentence {
+    display: flex;
+    gap: 10px; /* Space between blocks */
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 80%; /* Adjust as needed */
+    border: 2px dashed black; /* Dashed border to indicate this is where the sentence is formed */
+    justify-content: center; /* Horizontally center blocks */
+    align-items: center; /* Vertically center blocks */
+    min-height: 50px; /* Minimum height to show even if empty */
+    background-color: #f3f3f3; /* A light background */
+    
+}
