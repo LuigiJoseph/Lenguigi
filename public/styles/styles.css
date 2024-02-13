@@ -34,11 +34,32 @@ body {
 }
 
 
-    #wordBlocks {
-        display: flex;
-        gap: 10px; /* Space between blocks */
-        min-height: 60px; /* This ensures that the div doesn't collapse */
-    }
+/* Existing CSS ... */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+#wordBlocks {
+    justify-content: flex-start; /* Align blocks to slightly left of center */
+}
+
+.legend {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.legend .block {
+    margin: 0;
+}
 
 
 
@@ -50,17 +71,23 @@ body {
     border: 1px solid black;
 }
 
-.block[data-type="pronoun"] {
+.block[data-type="subject"] {
     background-color: black;
     color: white;
 }
 
 .block[data-type="verb"] {
     background-color: red;
+    color: white;
 }
 
-.block[data-type="noun"] {
+.block[data-type="object"] {
     background-color: blue;
+    color: white;
+}
+
+.block[data-type="particle"] {
+    background-color: purple; 
     color: white;
 }
 
@@ -69,7 +96,7 @@ body {
     gap: 10px; /* Space between blocks */
     margin: 20px auto;
     padding: 10px;
-    max-width: 80%; /* Adjust as needed */
+    max-width: 100%; 
     border: 2px dashed black; /* Dashed border to indicate this is where the sentence is formed */
     justify-content: center; /* Horizontally center blocks */
     align-items: center; /* Vertically center blocks */

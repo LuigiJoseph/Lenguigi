@@ -20,6 +20,10 @@ app.use(expressLayouts)
 // Ensure you have this line here to serve static files from public like css
 app.use(express.static('public'))
 
+//To access files in the data folder 
+app.use('/data', express.static('data'))
+
+
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true  }) 
 

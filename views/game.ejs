@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lenguigi game</title>
-    <link rel="stylesheet" href="/styles/styles.css">
-</head>
-
 <body>
     <h1>Start new game</h1>
 
-    <div id="wordBlocks">
-        <div class="block" data-type="pronoun">yo</div>
-        <div class="block" data-type="verb">como</div>
-        <div class="block" data-type="noun">tacos</div>
+    <!-- Container for game elements -->
+    <div class="container">
+        <div id="wordBlocks"></div>
+
+        <div id="constructedSentence"></div>
+
+        <button id="confirmButton">Confirm</button>
+
+        <div id="message"></div>
     </div>
 
-    <div id="constructedSentence"></div>
-
-    <button id="confirmButton">Confirm</button>
-
-    <div id="message"></div>
+    <!-- Legend blocks in the top right corner -->
+    <div class="legend">
+        <div class="block" style="background-color: red;">Verb</div>
+        <div class="block" style="background-color: blue; color: white;">Object</div>
+        <div class="block" style="background-color: black; color: white;">Subject</div>
+    </div>
+    
 
     <script src="/scripts/game.js"></script>
 </body>
-
-</html>

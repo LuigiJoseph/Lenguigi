@@ -1,0 +1,65 @@
+{
+    "Pronouns":["Yo", "Tú", "Él", "Ella", "Usted", "Nosotras", "Nosotros", "Vosotras", "Vosotros", "Ellos", "Ellas", "Ustedes"]
+    ,
+    "verbs": {
+        "to eat": {
+            "infinitive": "comer",
+            "present": {
+                "Yo": "como",
+                "Tú": "comes",
+                "Él/Ella/Usted": "come",
+                "Nosotros/Nosotras": "comemos",
+                "Vosotros/Vosotras": "coméis",
+                "Ellos/Ellas/Ustedes": "comen"
+            }
+        },
+        "to live": {
+            "infinitive": "vivir",
+            "present": {
+                "Yo": "vivo",
+                "Tú": "vives",
+                "Él/Ella/Usted": "vive",
+                "Nosotros/Nosotras": "vivimos",
+                "Vosotros/Vosotras": "vivís",
+                "Ellos/Ellas/Ustedes": "viven"
+            }
+        },
+        "to have": {
+            "infinitive": "tener",
+            "present": {
+                "Yo": "tengo",
+                "Tú": "tienes",
+                "Él/Ella/Usted": "tiene",
+                "Nosotros/Nosotras": "tenemos",
+                "Vosotros/Vosotras": "tenéis",
+                "Ellos/Ellas/Ustedes": "tienen"
+            }
+        },
+        "to read": {
+            "infinitive": "leer",
+            "present": {
+                "Yo": "leo",
+                "Tú": "lees",
+                "Él/Ella/Usted": "lee",
+                "Nosotros/Nosotras": "leemos",
+                "Vosotros/Vosotras": "leéis",
+                "Ellos/Ellas/Ustedes": "leen"
+            }
+        }
+    },
+
+    "nouns": {
+        "masculine": {
+            "singular": ["taco", "libro", "gato", "coche", "sombrero"],
+            "plural": ["tacos", "libros", "gatos", "coches", "sombreros"]
+        },
+        "feminine": {
+            "singular": ["manzana", "casa", "chica", "mesa", "silla"],
+            "plural": ["manzanas", "casas", "chicas", "mesas", "sillas"]
+        }
+    }
+}
+
+
+
+

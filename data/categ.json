@@ -1,0 +1,55 @@
+{
+    "manzana": {
+        "syntax": "NP",
+        "semantic": "apple",
+        "gender": "fem"
+    },
+    "como": {
+        "syntax": "VP",
+        "semantic": "λx.como(x)"
+    },
+    "juego": {
+        "syntax": "VP",
+        "semantic": "λx.juego(x)"
+    },
+    "la": {
+        "syntax": "NP/N",
+        "semantic": "λx.x",
+        "gender": "fem"
+    },
+    "el": {
+        "syntax": "NP/N",
+        "semantic": "λx.x",
+        "gender": "masc"
+    },
+    "come": {
+        "syntax": "(S\\NP)/NP",
+        "semantic": "λo.λs.comer(s, o)"
+    },
+    "hombre": {
+        "syntax": "NP",
+        "semantic": "man",
+        "gender": "masc"
+    },
+    "mujer": {
+        "syntax": "NP",
+        "semantic": "woman",
+        "gender": "fem"
+    },
+    "niño": {
+        "syntax": "NP",
+        "semantic": "boy",
+        "gender": "masc"
+    },
+    "niña": {
+        "syntax": "NP",
+        "semantic": "girl",
+        "gender": "fem"
+    },
+    "perro": {
+        "syntax": "NP",
+        "semantic": "dog",
+        "gender": "masc"
+    }
+}
+
