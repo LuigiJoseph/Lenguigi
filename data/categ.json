@@ -4,14 +4,61 @@
         "semantic": "apple",
         "gender": "fem"
     },
-    "como": {
-        "syntax": "VP",
-        "semantic": "λx.como(x)"
+    "banana": {
+        "syntax": "NP",
+        "semantic": "banana",
+        "gender": "fem"
     },
-    "juego": {
-        "syntax": "VP",
-        "semantic": "λx.juego(x)"
+    "casa": {
+        "syntax": "NP",
+        "semantic": "house",
+        "gender": "fem"
     },
+    "gato": {
+        "syntax": "NP",
+        "semantic": "cat",
+        "gender": "masc"
+    },
+    "gata": {
+        "syntax": "NP",
+        "semantic": "cat",
+        "gender": "fem"
+    },
+
+    "ve" : {
+        "syntax": "(S\\NP)/NP",
+        "semantic": "λo.λs.ver(s, o)"
+    },
+    "juege": {
+        "syntax": "(S\\NP)/NP",
+        "semantic": "λo.λs.jugar(s, o)"
+    },
+    "perra": {
+        "syntax": "NP",
+        "semantic": "dog",
+        "gender": "fem"
+    },
+
+    "golpea": {
+        "syntax": "(S\\NP)/NP",
+        "semantic": "λo.λs.golpear(s, o)"
+    },
+
+    "tiene": {
+        "syntax": "(S\\NP)/NP",
+        "semantic": "λo.λs.tener(s, o)"
+    },
+
+    "patea": {
+        "syntax": "(S\\NP)/NP",
+        "semantic": "λo.λs.patear(s, o)"
+    },
+    "fútbol": {
+        "syntax": "NP",
+        "semantic": "football",
+        "gender": "masc"
+    },
+
     "la": {
         "syntax": "NP/N",
         "semantic": "λx.x",
@@ -36,6 +83,12 @@
         "semantic": "woman",
         "gender": "fem"
     },
+
+    "mira": {
+        "syntax": "(S\\NP)/NP",
+        "semantic": "λo.λs.mirar(s, o)"
+    },
+
     "niño": {
         "syntax": "NP",
         "semantic": "boy",

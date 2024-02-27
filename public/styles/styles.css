@@ -61,8 +61,6 @@ body {
     margin: 0;
 }
 
-
-
 .block {
     display: inline-block;
     padding: 10px;
@@ -74,6 +72,11 @@ body {
 .block[data-type="subject"] {
     background-color: black;
     color: white;
+}
+
+.block[data-type="noun"] {
+    background-color: yellow;
+    color: black;
 }
 
 .block[data-type="verb"] {

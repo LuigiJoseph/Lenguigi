@@ -39,14 +39,11 @@ function generateSentence() {
   let subjectParticle = dictionary[subject].gender === "masc" ? "el" : "la";
   let objectParticle = dictionary[object].gender === "masc" ? "el" : "la";
 
-  return `${subjectParticle} ${subject} ${verb} ${objectParticle} ${object}`;
+  let sentence = `${subjectParticle} ${subject} ${verb} ${objectParticle} ${object}`;
+
+  return sentence;
 }
 
-//let the user generate sentences from the words dictionary
-function validSentence(sentence) {
-  
-  
-}
 
 let nounCount = 0;
 // Initialize the game with sentence generation
@@ -93,3 +90,4 @@ function initGame() {
     }
   });
 }
+
