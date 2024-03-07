@@ -45,18 +45,18 @@ function displayWords() {
   }).join('');
 }
 
-function getDisplayType(syntax) {
-  switch(syntax) {
-    case "NP":
-      return "noun"; // will apply the noun class
-    case "(S\\NP)/NP":
-      return "verb"; // will apply the verb class
-    case "NP/N":
-      return "particle"; // will apply the particle class
-    default:
-      return "other"; // will apply the other class if none of the above matches
-  }
-}
+// function getDisplayType(syntax) {
+//   switch(syntax) {
+//     case "NP":
+//       return "noun"; // will apply the noun class
+//     case "(S\\NP)/NP":
+//       return "verb"; // will apply the verb class
+//     case "NP/N":
+//       return "particle"; // will apply the particle class
+//     default:
+//       return "other"; // will apply the other class if none of the above matches
+//   }
+// }
 
 
 function selectWord(word) {
@@ -117,19 +117,84 @@ function checkGenderAgreement(blocks) {
 }
 
 
+
+
+function ccgReduce(sentenceArray) {
+  let stack = [];
+
+  sentenceArray.forEach(word => {
+      let wordType = dictionary[word].syntax;
+      console.log(`Processing word: ${word}, Syntax: ${wordType}`); 
+
+      while (stack.length > 0) {
+          let topStackType = stack[stack.length - 1].type;
+
+          // Forward Application
+          if (topStackType.endsWith(`/${wordType}`)) {
+              let reducedType = topStackType.replace(`/${wordType}`, '');
+              console.log(`Reducing (Forward): ${topStackType} with ${wordType} to ${reducedType}`); // Log the reduction
+              stack.pop(); // 
+              wordType = reducedType; // Set the reduced type as the new word type
+          } 
+          // Backward Application
+          else if (wordType.endsWith(`${topStackType}`)) {
+              let reducedType = wordType.replace(`\\${topStackType}`, '');
+              console.log(`Reducing (Backward): ${wordType} with ${topStackType} to ${reducedType}`); 
+              stack.pop(); 
+              wordType = reducedType; // Set the reduced type as the new word type
+            
+          } 
+          else {
+              break; 
+          }
+      }
+      console.log(`Pushing word: ${word} with type: ${wordType}`);
+      stack.push({ word, type: wordType }); // Push the word with its (possibly reduced) type onto the stack
+      
+  });
+
+  return stack.length === 1 && (stack[0].type === 'S' || '(S)'); // Return true if the stack contains a single item of type S
+}
+// function checkSentence() {
+//   let sentenceBlocks = document.querySelectorAll('#constructedSentence .block');
+//   let sentenceStructure = Array.from(sentenceBlocks).map(block => block.getAttribute('data-type'));
+//   // Simple check for a structure "particle - noun - verb - particle - noun"
+//   let correctStructure = sentenceStructure.join(' ') === 'particle noun verb particle noun';
+
+//   //check gender 
+//   let genderAgreement = checkGenderAgreement(sentenceBlocks);
+
+//   if (correctStructure && genderAgreement)  {
+
+//     document.getElementById('message').textContent = 'Correct!';
+//   } else {
+//     document.getElementById('message').textContent = 'Incorrect structure!';
+//   }
+// }
+
+
 function checkSentence() {
   let sentenceBlocks = document.querySelectorAll('#constructedSentence .block');
-  let sentenceStructure = Array.from(sentenceBlocks).map(block => block.getAttribute('data-type'));
-  // Simple check for a structure "particle - noun - verb - particle - noun"
-  let correctStructure = sentenceStructure.join(' ') === 'particle noun verb particle noun';
+  let sentenceWords = Array.from(sentenceBlocks).map(block => block.dataset.word);
+  let isCorrect = ccgReduce(sentenceWords);
 
-  //check gender 
-  let genderAgreement = checkGenderAgreement(sentenceBlocks);
-
-  if (correctStructure && genderAgreement)  {
-
-    document.getElementById('message').textContent = 'Correct!';
+  if (isCorrect) {
+      document.getElementById('message').textContent = 'Correct CCG structure!';
+      console.log(`Submitted sentence: ${sentenceWords.join(' ')}`);
   } else {
-    document.getElementById('message').textContent = 'Incorrect structure!';
+      document.getElementById('message').textContent = 'Incorrect CCG structure!';
+      console.log(`Submitted sentence: ${sentenceWords.join(' ')}`);
   }
 }
+
+
+
+
+
+
+//Notes to do :
+//Create categ for que and other realtive pronouns
+//Create categ for adjectives
+//Create categ for adverbs
+//Create categ for prepositions
+//Create categ for conjunctions

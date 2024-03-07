@@ -1,26 +1,26 @@
 {
     "manzana": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "apple",
         "gender": "fem"
     },
     "banana": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "banana",
         "gender": "fem"
     },
     "casa": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "house",
         "gender": "fem"
     },
     "gato": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "cat",
         "gender": "masc"
     },
     "gata": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "cat",
         "gender": "fem"
     },
@@ -34,8 +34,8 @@
         "semantic": "λo.λs.jugar(s, o)"
     },
     "perra": {
-        "syntax": "NP",
-        "semantic": "dog",
+        "syntax": "N",
+        "semantic":"dog",
         "gender": "fem"
     },
 
@@ -54,7 +54,7 @@
         "semantic": "λo.λs.patear(s, o)"
     },
     "fútbol": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "football",
         "gender": "masc"
     },
@@ -74,12 +74,12 @@
         "semantic": "λo.λs.comer(s, o)"
     },
     "hombre": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "man",
         "gender": "masc"
     },
     "mujer": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "woman",
         "gender": "fem"
     },
@@ -90,19 +90,23 @@
     },
 
     "niño": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "boy",
         "gender": "masc"
     },
     "niña": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "girl",
         "gender": "fem"
     },
     "perro": {
-        "syntax": "NP",
+        "syntax": "N",
         "semantic": "dog",
         "gender": "masc"
+    },
+    "que":{
+        "syntax": "(S\\NP)/(S/NP)"
+
     }
 }
 
