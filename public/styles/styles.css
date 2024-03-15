@@ -74,6 +74,7 @@ body {
     color: white;
 }
 
+
 .block[data-type="noun"] {
     background-color: yellow;
     color: black;
@@ -107,3 +108,4 @@ body {
     background-color: #f3f3f3; /* A light background */
     
 }
+

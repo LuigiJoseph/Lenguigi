@@ -27,8 +27,8 @@ function shuffleArray(array) {
 
 // Generate a sentence with correct gender particles
 function generateSentence() {
-  let subjects = Object.keys(dictionary).filter(word => dictionary[word].syntax === "NP");
-  let objects = Object.keys(dictionary).filter(word => dictionary[word].syntax === "NP");
+  let subjects = Object.keys(dictionary).filter(word => dictionary[word].syntax === "N");
+  let objects = Object.keys(dictionary).filter(word => dictionary[word].syntax === "N");
   let verbs = Object.keys(dictionary).filter(word => dictionary[word].syntax === "(S\\NP)/NP");
 
   let subject = subjects[Math.floor(Math.random() * subjects.length)];

@@ -1,8 +1,6 @@
-
-
 let dictionary;
 
-// Fetch the category dictionary
+
 fetch('../data/categ.json')
   .then(response => {
     if (!response.ok) {
@@ -20,7 +18,7 @@ fetch('../data/categ.json')
   });
 
 
-// Display the words in the dictionary
+
 function displayWords() {
   let words = Object.keys(dictionary);
   let wordBlocks = document.getElementById('wordBlocks');
@@ -29,7 +27,7 @@ function displayWords() {
       let displayType;
       
       // Assign displayType based on syntax
-      if (syntax === "NP") {
+      if (syntax === "N") {
           displayType = "noun";
       } else if (syntax === "(S\\NP)/NP") {
           displayType = "verb";
@@ -45,30 +43,83 @@ function displayWords() {
   }).join('');
 }
 
-// function getDisplayType(syntax) {
-//   switch(syntax) {
-//     case "NP":
-//       return "noun"; // will apply the noun class
-//     case "(S\\NP)/NP":
-//       return "verb"; // will apply the verb class
-//     case "NP/N":
-//       return "particle"; // will apply the particle class
-//     default:
-//       return "other"; // will apply the other class if none of the above matches
-//   }
-// }
+
+function canCombine(word1, word2) {
+  let type1 = dictionary[word1].syntax;
+  let type2 = dictionary[word2].syntax;
+
+  // Here you'll add the logic to determine if two types can combine
+  // For now, we will just check for NP/N and N as an example
+  if (type1 === 'NP/N' && type2 === 'N') {
+    return { canCombine: true, newType: 'NP' };
+  }
+
+  // Add more CCG combination rules here
+
+  // If no valid combination is found
+  return { canCombine: false, newType: null };
+}
+
+function createCombinedBlock(word1, word2, newType) {
+  let combinedWord = `${word1} ${word2}`;
+  let combinedBlock = document.createElement('div');
+  combinedBlock.classList.add('block', newType);
+  combinedBlock.dataset.type = newType;
+  combinedBlock.dataset.word = combinedWord;
+  combinedBlock.textContent = combinedWord;
+
+  // Update the visual appearance based on the new type
+  updateBlockVisual(combinedBlock);
+  
+  return combinedBlock;
+}
+
+
+function updateBlockVisual(block) {
+  switch(block.dataset.type) {
+    case 'NP':
+      block.style.backgroundColor = 'orange';
+      break;
+    // Handle other types if necessary
+  }
+}
 
 
 function selectWord(word) {
-  // Find the block that was clicked
+  // Get the clicked block
   let block = document.querySelector(`.block[data-word='${word}']`);
-  // Move the block to the constructed sentence or back to word blocks
-  if (block.parentNode.id === 'constructedSentence') {
-    document.getElementById('wordBlocks').appendChild(block);
+
+  // Get the container where the sentence is being constructed
+  let constructedSentence = document.getElementById('constructedSentence');
+
+  // Check if there is a block in the sentence that can be combined with the clicked block
+  let lastBlock = constructedSentence.lastElementChild;
+  if (lastBlock) {
+    let lastWord = lastBlock.dataset.word;
+    let canCombineResult = canCombine(lastWord, word);
+
+    if (canCombineResult.canCombine) {
+      // Remove the individual blocks
+      lastBlock.remove();
+      block.remove();
+
+      // Create a new block that combines both words
+      let newBlock = createCombinedBlock(lastWord, word, canCombineResult.newType);
+      constructedSentence.appendChild(newBlock);
+    } else {
+      // If they can't be combined, just move the block to the sentence container
+      constructedSentence.appendChild(block);
+    }
   } else {
-    document.getElementById('constructedSentence').appendChild(block);
+    // If there are no other blocks, just move the block to the sentence container
+    constructedSentence.appendChild(block);
   }
+
+  // Reattach event listeners to blocks after any DOM updates
+  attachBlockListeners();
 }
+
+
 
 // Reusable function to attach event listeners to blocks
 function attachBlockListeners() {
@@ -117,8 +168,6 @@ function checkGenderAgreement(blocks) {
 }
 
 
-
-
 function ccgReduce(sentenceArray) {
   let stack = [];
 
@@ -155,22 +204,7 @@ function ccgReduce(sentenceArray) {
 
   return stack.length === 1 && (stack[0].type === 'S' || '(S)'); // Return true if the stack contains a single item of type S
 }
-// function checkSentence() {
-//   let sentenceBlocks = document.querySelectorAll('#constructedSentence .block');
-//   let sentenceStructure = Array.from(sentenceBlocks).map(block => block.getAttribute('data-type'));
-//   // Simple check for a structure "particle - noun - verb - particle - noun"
-//   let correctStructure = sentenceStructure.join(' ') === 'particle noun verb particle noun';
 
-//   //check gender 
-//   let genderAgreement = checkGenderAgreement(sentenceBlocks);
-
-//   if (correctStructure && genderAgreement)  {
-
-//     document.getElementById('message').textContent = 'Correct!';
-//   } else {
-//     document.getElementById('message').textContent = 'Incorrect structure!';
-//   }
-// }
 
 
 function checkSentence() {
@@ -186,9 +220,6 @@ function checkSentence() {
       console.log(`Submitted sentence: ${sentenceWords.join(' ')}`);
   }
 }
-
-
-
 
 
 
